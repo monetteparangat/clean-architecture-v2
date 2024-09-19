@@ -30,7 +30,7 @@ namespace CleanArchitecture.Infrastructure.IoC
 
             //Domain IMediatr
             services.AddScoped<IMediatorHandler, InMemoryBus>();
-            services.AddScoped<IRequestHandler<CreateCourseCommand, bool>, CourseCommandHandler>();
+            //services.AddScoped<IRequestHandler<CreateCourseCommand, bool>, CourseCommandHandler>();
         }
     }
 }

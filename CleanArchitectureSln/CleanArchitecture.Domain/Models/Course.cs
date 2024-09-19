@@ -13,6 +13,6 @@ namespace CleanArchitecture.Domain.Models
         public string? Description { get; set; }
         public string? ImageUrl { get; set; }
 
-        public IEnumerable<Course> Courses { get; set; }
+        public IEnumerable<Course>? Courses { get; set; }
     }
 }

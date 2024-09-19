@@ -25,6 +25,9 @@ builder.Services.AddControllersWithViews();
 // Dependency Container - Register Services
 DependencyContainer.RegisterServices(builder.Services);
 
+//Register mediatR
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
