@@ -10,5 +10,6 @@ namespace CleanArchitecture.Application.Interfaces
     public interface ICourseService
     {
         public CourseVM GetCourses();
+        public void Create(CourseVM course);
     }
 }
