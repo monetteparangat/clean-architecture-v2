@@ -1,3 +1,4 @@
+using CleanArchitecture.Infrastructure.IoC;
 using CleanArchitecture.Presentation.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+// Dependency Container - Register Services
+DependencyContainer.RegisterServices(builder.Services);
 
 var app = builder.Build();
 
