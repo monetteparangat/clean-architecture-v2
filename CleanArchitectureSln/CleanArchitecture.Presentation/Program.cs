@@ -1,3 +1,4 @@
+using CleanArchitecture.Infrastructure.Data.Context;
 using CleanArchitecture.Infrastructure.IoC;
 using CleanArchitecture.Presentation.Data;
 using Microsoft.AspNetCore.Identity;
@@ -8,10 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 var universityIdentityConnectionString = builder.Configuration.GetConnectionString("UniversityIdentityDbConnection") ?? throw new InvalidOperationException("Connection String 'UniversityIdentityDbConnection' not found");
-
+var universityDbConnectionString = builder.Configuration.GetConnectionString("UniversityDbConnection") ?? throw new InvalidOperationException("Connection String 'UniversityDbConnection' not found");
 //AddDbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(universityIdentityConnectionString, ServerVersion.AutoDetect(universityIdentityConnectionString)));
+
+builder.Services.AddDbContext<UniversityDbContext>(options =>
+    options.UseMySql(universityDbConnectionString, ServerVersion.AutoDetect(universityDbConnectionString)));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)

@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Application.Interfaces;
+using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Interfaces;
 using CleanArchitecture.Infrastructure.Data.Repository;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +16,7 @@ namespace CleanArchitecture.Infrastructure.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             //Application
-            services.AddScoped<ICourseService, ICourseService>();
+            services.AddScoped<ICourseService, CourseService>();
 
             //Domain
             services.AddScoped<ICourseRepository, CourseRepository>();
